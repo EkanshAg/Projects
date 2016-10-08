@@ -1,0 +1,67 @@
+Authors Identity:
+Ekansh Agarwal
+
+
+Coordinator:
+Mrs. Shaili Gupta
+Asst. Professor
+
+
+Files:
+
+• Steganography.m
+  It contains the source code of the project.
+
+• Text Folder
+  It contains the data(message) which user want to hide.
+
+• Images Folder
+  It contains the image which user want to hide.
+
+• Sample Video Folder
+  It contains the cover medium i.e. video in which data will be hidden.
+
+• output.avi
+  It is the stego-video containing hidden data and sound also.
+
+• eku.avi
+  It is the stego-video containing hidden data, but it doesn't contain any sound
+
+• audio.wav
+  It is the audio file in which data is hidden.
+
+• retrieve_message.txt
+  It is the text file which contains the text data in encypted form
+
+• Encryption Folder
+  The folder contains text and images in encrypted form.
+
+• Decryption Folder
+  This folder contains decrypted message.
+
+• Research Paper Folder
+  It contains the research paper that has been published by IJCA publication, and paper is related to project.
+
+
+
+Hardware Requirement:
+
+The minimum hardware requirements for the project are:
+• Core I3 2.0 GHz Processor
+• Minimum of 2GB RAM
+• Minimum of 20 GB HDD
+• VGA Display with 640 x 480 screen in High/True color Display mode
+• 1.44 MB FDD
+• 2X CD ROM Drive
+• Monitor
+• Keyboard
+• Mouse
+
+
+
+Software Requirement:
+
+• Matlab 2013a
+• Operating system: Windows 7
+
+

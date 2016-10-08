@@ -1,0 +1,266 @@
+The Journal of Systems and Software 86 (2013) 315– 323 
+Contents lists available at SciVerse ScienceDirect 
+The Journal of Systems and Software 
+jo u rn al hom epage: www.elsevier.com/locate/jss 
+Histogram-shifting-imitated reversible data hiding 
+Zhi-Hui Wanga,1, Chin-Feng Leeb,*, Ching-Yun Changc 
+a Department of Software, Dalian University of Technology, Dalian, China 
+b Department of Information Management, Chaoyang University of Technology, Taichung, Taiwan 
+c Computer Laboratory, University of Cambridge, Cambridge, UK 
+a r t i c l e i n f o 
+Article history: 
+Received 1 January 2012 
+Received in revised form 17 May 2012 
+Accepted 13 August 2012 
+Available online 23 August 2012 
+Keywords: 
+Image authentication 
+Lossless watermarking 
+Reversible data hiding 
+Steganography 
+a b s t r a c t 
+This paper proposes a novel reversible data hiding scheme based on the histogram-shifting-imitated 
+approach. Instead of utilizing the peak point of an image histogram, the proposed scheme manipulates 
+the peak points of segments based on image intensity. The secret data can be embedded into the cover 
+image by changing the peak point pixel value into other pixel value in the same segment. The proposed 
+method uses a location map to guarantee the correct extraction of the secret data. Since the modification 
+of the pixel value is limited within each segment, the quality of the stego image is only related to the size 
+of the segmentation, which means after embedding data into the cover image, it can be reused to do the 
+multi-layer data embedding while maintaining the high quality of the final stego image. The experimental 
+results of comparison with other existing schemes demonstrate the performance of the proposed scheme 
+is superior to the others. 
+© 2012 Elsevier Inc. All rights reserved. 
+1. Introduction 
+Steganography is the art and science of writing hidden messages  where H and W 
+denote the height and width of the cover image and the stegoimage. 
+Let I(x, y) and I(x, y) be denoted as a cover pixel value located 
+at the position (x, y) of the cover image I and stego-pixel I, where 
+1 
+= 
+x 
+= 
+W, 1 
+= 
+y 
+= 
+MSE 
+
+, (4) 
+where MSE 
+= 
+1/(W 
+× 
+H)
+
+W
+x=1
+
+H
+y=1(I(x, y) 
+- 
+I(x, y))2, I(x, y) and 
+I(x, y) are the (x, y)th pixel values of the cover image I and stegoimage 
+I; W and H denote the width and height of the cover image, 
+respectively. Acceptable values for image distortion after data have 
+been hidden are considered to be about 30 dB, with higher values 
+being better. 
+The performances of the test images are shown in Table 2. The 
+segmentation numbers N have been set as 8, 16, 32, 64, and 128, 
+respectively. Table 2 presents the highest image quality (segment 
+number set as 128) and maximum embedding capacity or pure payload 
+(segment number set as 164) for each test image. From Table 2, 
+when segment number N was set as 64 and 128, each test image 
+achieved a pure embedding rate greater than 0.5 bpp. The PSNR 
+values between the stego-image and the cover image were in the 
+range of 51.375–56.24402 dB, on average, which is the range that 
+is mostly easily seen by the human eye. 
+The best embedding rate and pure embedding rate of the 
+proposed scheme are, on average, 0.545 bpp and 0.533 bpp, respectively. 
+Meanwhile, the image ‘Toys’ has the best performance 
+in terms of the maximum pure embedding rate, i.e., 0.5769 bpp 
+with a PNSR value of 51.1690 dB, which is close to the perceptual 
+image visible value. Moreover, even for a complex image, such as 
+Fig. 7. Ten grayscale test images of size 512 
+× 
+512.
+
+Z.-H. Wang et al. / The Journal of Systems and Software 86 (2013) 315– 323 321 
+Table 2 
+Embedding rate, pure payload, pure embedding rate, and PSNR values of our proposed scheme (with segment numbers N set as 8, 16, 32, 64, and 128). 
+Images Segment number 
+8 16 32 64 128 
+Jet
+bpp(p/pp) 0.3744 0.3693 0.3824 0.3757 0.4568 0.4478 0.5621 0.5501 0.5228 0.5073 
+PSNR 37.5881 42.2052 46.6999 51.4937 56.6823 
+Pepper 
+bpp(p/pp) 0.2408 0.2358 0.3265 0.3201 0.4326 0.4244 0.5343 0.5227 0.5123 0.4972 
+PSNR 38.5443 43.1950 47.5661 51.9119 56.6003 
+Lena 
+bpp(p/pp) 0.2386 0.2322 0.3385 0.3316 0.4444 0.4338 0.5417 0.5283 0.5157 0.4986 
+PSNR 39.1139 44.3723 47.2582 51.7166 56.7563 
+Zelda 
+bpp(p/pp) 0.2121 0.2082 0.3023 0.2964 0.4116 0.4037 0.5237 0.5122 0.5091 0.4940 
+PSNR 40.2467 44.5032 47.7313 51.4598 56.0687 
+Goldhill 
+bpp(p/pp) 0.2339 0.2298 0.3089 0.3038 0.4209 0.4139 0.5280 0.5175 0.5123 0.4982 
+PSNR 38.6021 43.3448 46.9385 51.6503 55.4688 
+Baboon 
+bpp(p/pp) 0.2141 0.2097 0.2994 0.2930 0.4156 0.4060 0.5281 0.5149 0.5112 0.4945 
+PSNR 39.9381 42.8167 46.1755 50.7519 55.3643 
+Boat 
+bpp(p/pp) 0.2911 0.2837 0.3752 0.3660 0.4613 0.4494 0.5591 0.5439 0.5202 0.5025 
+PSNR 38.0422 41.6502 45.9906 49.8144 55.5754 
+Toys 
+bpp(p/pp) 0.3749 0.3695 0.4300 0.4203 0.5158 0.5051 0.5907 0.5769 0.5296 0.5132 
+PSNR 41.6890 44.2254 47.7769 51.1690 57.0191 
+Barbara 
+bpp(p/pp) 0.2511 0.2457 0.3317 0.3254 0.4320 0.4238 0.5414 0.5301 0.5155 0.5003 
+PSNR 38.9493 43.7494 48.1715 52.0332 56.7835 
+Tiffany 
+bpp(p/pp) 0.3134 0.3084 0.3676 0.3616 0.4658 0.4550 0.5443 0.5311 0.5167 0.5001 
+PSNR 39.3740 43.8185 46.5342 51.7558 56.1215 
+Average bpp(p/pp) 0.27444 0.26923 0.34625 0.33939 0.44568 0.43629 0.54534 0.53277 0.51654 0.50059 
+Average PSNR 36.20877 43.38807 47.08427 51.37566 56.24402 
+Table 3 
+Embedding capacity, embedding rate, pure payload, pure embedding rate, and PSNR values of our proposed scheme with multi-layer (with segment numbers N set as 128,). 
+Images Layer number 
+2 3 4 5 6 7 8 9 10 
+Jet
+bpp 1.2616 1.8916 2.5763 3.2341 3.9051 4.5686 5.2358 5.9023 6.5685 
+PSNR 55.73 54.34 54.77 53.94 54.56 53.85 54.5 53.83 54.5 
+Pepper 
+bpp 1.2554 1.8829 2.5680 3.2263 3.8967 4.5604 5.2286 5.8920 6.5605 
+PSNR 55.61 54.39 54.68 54.01 54.47 53.93 54.42 53.91 54.39 
+Lena 
+bpp 1.2571 1.8871 2.5717 3.2299 3.8967 4.5635 5.2307 5.8958 6.5629 
+PSNR 55.41 54.77 54.46 54.34 54.24 54.22 54.18 54.2 54.19 
+Zelda 
+bpp 1.2533 1.8814 2.5678 3.2250 3.8946 4.5594 5.2272 5.8931 6.5584 
+PSNR 55.44 54.69 54.45 54.25 54.26 54.16 54.19 54.12 54.19 
+Goldhill 
+bpp 1.2554 1.8736 2.5707 3.2280 3.8983 4.5630 5.2295 5.8955 6.5626 
+PSNR 55.49 54.64 54.5 54.21 54.28 54.11 54.23 54.08 54.2 
+Baboon 
+bpp 1.2539 1.8822 2.5681 3.3760 3.8935 4.5578 5.2243 5.8896 6.5566 
+PSNR 55.42 54.73 54.44 54.3 54.24 54.2 54.16 54.16 54.16 
+Boat 
+bpp 1.2585 1.8883 2.5714 3.2419 3.9003 4.5644 5.2311 5.8967 6.5628 
+PSNR 55.8 54.19 54.82 53.82 54.59 53.74 54.54 53.72 54.54 
+Toys 
+bpp 1.2636 1.8950 2.5781 3.2352 3.9050 4.5691 5.2362 5.9014 6.5684 
+PSNR 55.34 54.85 54.36 54.36 54.16 54.3 54.11 54.28 54.11 
+Barbara 
+bpp 1.2575 1.8852 2.5684 3.2262 3.8982 4.5617 5.2272 5.8949 6.5612 
+PSNR 55.57 54.48 54.61 54.07 54.4 53.98 54.33 53.95 54.33 
+Tiffany 
+bpp 1.2581 1.8859 2.5703 3.2272 3.8988 4.5612 5.2306 5.8954 6.5574 
+PSNR 55.64 54.41 54.71 54.03 54.48 53.93 54.42 53.9 54.4 
+Average bpp 1.2574 1.8853 2.5711 3.2458 3.8993 4.5727 5.2306 5.8957 6.5619 
+Average PSNR 55.545 54.549 54.58 54.133 54.368 54.042 54.308 54.015 54.301
+
+322 Z.-H. Wang et al. / The Journal of Systems and Software 86 (2013) 315– 323 
+Fig. 8. Pure embedding rate versus PSNR of the proposed scheme and other schemes for four typical test images: (a) “Lena,” (b) “Jet,” (c) “Baboon,” and (d) “Boat.”. 
+‘Baboon,’ the best pure embedding rate is as high as 0.5149 bpp with 
+an acceptably high stego-image perceptual quality of 50.7519 dB. 
+From Table 2, the experimental results of the sego-image quality 
+are dominated by segment sizes, namely, segment numbers. The 
+perceptual qualities of different images have almost the same PSNR 
+values for the same segment size. The proposed scheme employs 
+pixel replacement at the segment-peaks to embed messages. Since 
+an image has the property that most adjacent points are very similar 
+in locality, the more adjacent pixels are included within the 
+same segment that the lower image distortion an image can be 
+suffered from. Especially for much smoother-looking images, the 
+image quality will not incur severe degradation when the pixels 
+within the same segment are replaced for embedding data. 
+The highest embedding rate and the best visual quality are 
+achieved when the segment number is set as 64 and 128, respectively. 
+Clearly, the image distortion between the cover image and 
+the stego-image is imperceptible. The result of Table 2 also demonstrates 
+that pretty high visual quality can be achieved in this 
+proposed scheme. The ‘p’ in item bpp(p/pp) means payload and 
+‘pp’ means pure payload in Table 2. 
+4.2. Comparison with related schemes based on embedding rate 
+and perceptual quality 
+The performance of the proposed scheme was compared with 
+other popular reversible data hiding schemes of Kim et al. (2008), 
+Tai et al. (2009), Ni et al. (2003), Thodi and Rodríguez (2007), 
+Tian (2003), and Tsai et al. (2009). These schemes use either the 
+DE-based technique or the histogram-based technique for onelayer 
+embedding. Generally, the histogram-based schemes achieve 
+stego-images that have higher image quality; however, the pure 
+embedding rate of such schemes is limited. In contrast, the DEbased 
+schemes can reach higher embedding capacity, but they 
+suffer from higher image distortion than histogram-based schemes. 
+Fig. 8 shows the results of performance comparisons in terms of 
+pure embedding rate versus visual effect for the stego-image. In 
+Fig. 8, the plot line of the proposed scheme demonstrates the pure 
+embedding rate measure in bpp and the PSNR values of image quality 
+for segment numbers 8, 16, 32, 64, and 128. Fig. 8 shows that the 
+proposed scheme can indeed achieve stego-images with very high 
+visual quality and a pure embedding rate when the parameter of 
+segment number is set greater than 16. At a segment number of 64, 
+the pure embedding rate is greater than 0.53 bpp, which possesses 
+high PSNR values. Taking the image “Baboon” as an example, the 
+related schemes have lower pure embedding rates (below 0.1 bpp) 
+when they attempt to keep the image quality close to 45 dB. However, 
+the pure payload measure reaches 0.5149 bpp, while the PSNR 
+value is above 50.7519 dB. Moreover, at the segment number of 128, 
+the perceptual image visible value of the proposed scheme is the 
+highest among all the schemes. The PSNR values approach 56.2 dB, 
+on average, while the pure embedding rate is maintained at 0.5 bpp, 
+which is only 0.03 bpp less than the maximum pure embedding rate
+
+Z.-H. Wang et al. / The Journal of Systems and Software 86 (2013) 315– 323 323 
+when the segment number was set as 64. Obviously, the proposed 
+scheme is highly superior to the other schemes in terms of image 
+quality with the same hiding capacity. 
+Table 3 presents the experimental results of embedding multilayer 
+secret messages into the cover image. From Table 3, it can 
+be seen, that the hiding capacity improves about 0.7 bpp for each 
+layer while the PSNR of the stego image is about 54 dB for every 
+level. In layer 10, the capacity could achieve about 6.5 bpp while the 
+stego image quality is still about 54 for all kinds of images, which 
+proves the performance of the proposed scheme is superior to other 
+existing methods both in hiding capacity and image quality. 
+5. Conclusions 
+This section summarizes the experimental results of the proposed 
+scheme and compares that scheme with previous reversible 
+data hiding schemes. First, this paper proposed a novel data hiding 
+scheme with reversibility that offers several improvements over 
+other schemes: (1) the proposed scheme is a lossless process with 
+respect to the image, which allows an authorized party to decode 
+the embedded data and completely restore the original state; (2) 
+the proposed scheme achieves at stero-image that has high visual 
+quality. A smaller segment size can yield a stego-image with even 
+better visual quality because both the cover pixel and its corresponding 
+stego-pixel fall within the same segment. With a small 
+segment, the change in the range of values between the cover 
+pixel and the stego-pixel is very small. Furthermore, irrespective 
+of which one of the cover images is used, the PSNR values approximately 
+the same for the segment sizes; (3) the experimental results 
+indicate that the proposed scheme is superior to other schemes 
+for one single embedding layer; more than 0.5 bpp in the pure 
+embedding rate with the range of 51.375–56.24402 dB on average, 
+which is the mostly perceptual image visible value for Human 
+Visual System; (4) the proposed scheme is especially effective for 
+multiple-layer embedding without loss in image fidelity, because 
+the segment confines the degree of pixel modification. No matter 
+how many layers of message embedding are used, image distortion 
+can only occur to a very limited extent; (5) the proposed scheme 
+uses a simple function, i.e., pixel-shifting mapping with a private 
+key, to perform the embedding and extracting processes, which 
+takes a small amount of time and is secure. From the foregoing, it 
+can be seen clearly that our proposed scheme provides high embedding 
+capacity, provides a stego-image that has good visual quality, 
+has low time complexity, and affords very high security. 
+References 
+Alattar, A.M., 2004. Reversible watermark using the difference expansion of a 
+generalized integer transform. IEEE Transactions on Image Processing 13 (8), 
+1147–1156. 
+Carli, M., Campisi, P., Neri, A., 2006. Perceptual aspects in data hiding. Telecommunication 
+Systems 33 (1–3), 117–129. 
+Celik, M.U., Sharma, G., Tekalp, A.M., Saber, E., 2005. Lossless generalized-LSB data 
+embedding. IEEE Transactions on Image Processing 14 (2), 253–266. 
+Chan, C.K., Cheng, L.M., 2004. Hiding data in images by simple LSB substitution. 
+Pattern Recognition 37 (3), 469–474. 

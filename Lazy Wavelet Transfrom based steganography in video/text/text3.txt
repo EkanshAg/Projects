@@ -1,0 +1,607 @@
+    IMS ENGINEERING COLLEGE
+(DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING)
+				
+ REPORT ON LAZY WAVELET TRANSOFRM BASED STEGANOGRAPHY IN VIDEO
+
+B.Tech-4th year
+                             ACADEMIC SESSION 2010-2014
+
+
+ 
+
+
+
+SUBMITTED TO 					 SUBMITTED BY  
+PROF. SHAILI GUPTA                                   DISHA HARPLANI(1014310819)
+					                  EKANSH AGARWAL(1014310820)
+					                  SRISHTI AGARWAL(1014310845)
+					                  SHARAD MISHRA (1014310841)
+PROJECT STATUS
+
+?	The project is being developed.
+?	We have extracted  frames from video and hidden message in those images.
+?	GUI has been developed and is under process. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ABSTRACT
+
+
+Computer technology and the Internet have made a breakthrough in the existence of data communication. This has opened a whole new way of implementing steganography to ensure secure data transfer. Steganography is the fine art of hiding the information. Hiding the message in the carrier file enables the deniability of the existence of any message at all. This paper designs a stego machine to develop a steganographic application to hide data containing text in a computer video file and to retrieve the hidden information. This can be designed by embedding text file in a video file in such away that the video does not loose its functionality using Least Significant Bit (LSB) modification method. This method applies imperceptible modifications. This proposed method strives for high security to an eavesdropper s inability to detect hidden information.
+ 
+INTRODUCTION
+Steganography is an ancient art of conveying messages in a secret way that only the receiver knows the existence of message. The subject of steganography has been brought into the limelight by several intelligence agencies and the news media in recent times. Apart from using state of the art, communication technologies and media, the agencies are using cryptography as well as steganography to aid themselves with their objectives . So, a fundamental requirement for a steganographic method is imperceptibility; this means that the embedded messages should not be discernible to the human eye.
+The word steganography derives from the Greek word steganos, which means covered or secret, and graphy which means writing or drawing. Steganography is also referred to as Stego. The concept of steganography has existed for thousands of years. steganography aims at hiding the very existence of the secret message itself. It is done by hiding the secret data in any innocuous medium, so that is it not apparent that there is any data hidden in the cover medium.
+
+Multimedia files, such as images, audio and video are widely used today. Images are a good medium for hiding data. The more detailed the image, the lesser constraints there are on how much data it can hold without it becoming conspicuous.
+
+ Multimedia steganography is one of the most recent and secure forms of steganography. Visual steganography is the most widely practiced form of steganography. It started with concealing messages within the lowest bits of noisy images or sound files. We shall perform steganography on video files and hide the message in an encrypted format, thus achieving a multiple cryptographic system. The most commonly used technique is Least Significant Bit steganography (LSB steganography). But instead of traditional LSB encoding, we will use a modified encoding technique which will first transform the video using a Lazy Lifting Wavelet transform and then apply LSB in the subbands of the video that we have gotten.
+ 
+OVERVIEW
+
+Visual steganography is the most widely practiced form of steganography. It started with concealing messages within the lowest bits of noisy images or sound files. We shall perform steganography on video files and hide the message in an encrypted format, thus achieving a multiple cryptographic system. The most commonly used technique is Least Significant Bit steganography (LSB steganography). But instead of traditional LSB encoding, we will use a modified encoding technique which will first transform the video using a
+Lazy Lifting Wavelet transform and then apply LSB in the sub-bands of the video that has been obtained. The proposed approach to video steganography utilizes the visual as well as the audio component. The lazy wavelet transform is applied to the visual frames, and the data is stored in the coefficients of the visual component. The length up to which it is stored is hidden using LSB in the audio component. Experimental results show that the proposed technique does not affect the higher and lower ends of the frequency distribution of the signal. Moreover, it has a high payload capacity and low computational requirements.
+
+
+ 
+
+
+
+
+
+OBJECTIVES
+
+?	This project is developed for hiding information in any video file.
+?	We will extract frames from video file and apply Lazy wavelet transformation  and hide digital message into it. 
+?	The objective of the project is implementation of steganography  for hiding information includes text messages, images, audio and video files and the path where the user wants to save video and extruded file.
+?	The main purpose of our project is to create a user-friendly application which can solve the security concerns in message passing at least to some extent. 
+
+SUMMARY OF STUDY OF PRIOR WORK
+
+Steganography supports different types of digital formats that are used for hiding the data. These files are known as carriers. Depending upon the redundancy of the object, suitable formats are used.  The main file formats that are used for steganography are text, images, audio, and video. We have implemented the message hiding in a video file(AVI) in our project. 
+For the purpose of developing a steganographic application we went through all the steganographic methods available and decided to select  Secret Key Steganography  for our project.
+The different types of steganographic techniques available are:
+1.	Pure Steganography
+2.	Public key steganography
+3.	Secret key Steganography
+
+For our project we have decided to use Modified LSB technique which is simple yet efficient. This can be designed by embedding text file in a video file in such a way that the video does not lose its functionality. This proposed method strives for high security to an eavesdropper s inability to detect hidden information.
+
+ 
+MOTIVATION, SIGNIFICANCE AND FEATURES OF UNDERTAKEN WORK
+
+The existing method of video steganography uses lsb technique in which the encoded message can easily be detected. The proposed system uses lazy wavelet technique which applies lsb in the frequency domain of each video frame.
+
+The significance of the project includes:
+ A very usable and good looking wizard based GUI (Graphical User Interface) for the      system.
+  Ability to operate the system with no prior training and consultation of any help files.
+  Ability to conceal and reveal the exact hidden data from video file without disturbing the running application or new application.
+  Ability to encrypt and decrypt the data with the images.
+  With this system, an image, after hiding the data, will not degrade in quality.
+
+
+
+The video stegomachine performs the process of conceal and reveal in following modules. The features of Video Stegomachine are
+
+
+  Encryption
+  Steganography   Conceal data
+  DeSteganography - Reveal original data
+  Decryption
+  Graphical User Interface
+
+
+
+
+ 
+CODING
+ENCRYPTION
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.Cipher;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.InvalidKeyException;
+import java.security.InvalidAlgorithmParameterException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+
+import sun.misc.BASE64Encoder;
+
+/**
+ * This program provides the following cryptographic functionalities
+ * 1. Encryption using AES
+ * 2. Decryption using AES
+ * 
+ * High Level Algorithm :
+ * 1. Generate a DES key (specify the Key size during this phase) 
+ * 2. Create the Cipher 
+ * 3. To Encrypt : Initialize the Cipher for Encryption
+ * 4. To Decrypt : Initialize the Cipher for Decryption
+ * 
+ * 
+ */
+
+public class aes1  
+	public static void main(StringY] args)  
+		
+		String strDataToEncrypt = new String();
+		String strCipherText = new String();
+		String strDecryptedText = new String();
+		
+		try 
+		/**
+		 *  Step 1. Generate an AES key using KeyGenerator
+		 *  		Initialize the keysize to 128 
+		 * 
+		 */
+		KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+		keyGen.init(128);
+		SecretKey secretKey = keyGen.generateKey();
+		
+		/**
+		 *  Step2. Create a Cipher by specifying the following parameters
+		 * 			a. Algorithm name - here it is AES
+		 */
+		
+		Cipher aesCipher = Cipher.getInstance("AES");
+		
+		/**
+		 *  Step 3. Initialize the Cipher for Encryption 
+		 */
+		aesCipher.init(Cipher.ENCRYPT_MODE,secretKey);
+		
+		/**
+		 *  Step 4. Encrypt the Data
+		 *  		1. Declare / Initialize the Data. Here the data is of type String
+		 *  		2. Convert the Input Text to Bytes
+		 *  		3. Encrypt the bytes using doFinal method 
+		 */
+		strDataToEncrypt = "Hello World of Encryption using AES ";
+		byteY] byteDataToEncrypt = strDataToEncrypt.getBytes();
+		byteY] byteCipherText = aesCipher.doFinal(byteDataToEncrypt); 
+		strCipherText = new BASE64Encoder().encode(byteCipherText);
+		System.out.println("Cipher Text generated using AES is " +strCipherText);
+		
+		/**
+		 *  Step 5. Decrypt the Data
+		 *  		1. Initialize the Cipher for Decryption 
+		 *  		2. Decrypt the cipher bytes using doFinal method 
+		 */
+		aesCipher.init(Cipher.DECRYPT_MODE,secretKey,aesCipher.getParameters());
+		byteY] byteDecryptedText = aesCipher.doFinal(byteCipherText);
+		strDecryptedText = new String(byteDecryptedText);
+		System.out.println(" Decrypted Text message is " +strDecryptedText);
+		 
+		
+		catch (NoSuchAlgorithmException noSuchAlgo)
+		 
+			System.out.println(" No Such Algorithm exists " + noSuchAlgo);
+		 
+		
+			catch (NoSuchPaddingException noSuchPad)
+			 
+				System.out.println(" No Such Padding exists " + noSuchPad);
+			 
+		
+				catch (InvalidKeyException invalidKey)
+				 
+					System.out.println(" Invalid Key " + invalidKey);
+				 
+				
+				catch (BadPaddingException badPadding)
+				 
+					System.out.println(" Bad Padding " + badPadding);
+				 
+				
+				catch (IllegalBlockSizeException illegalBlockSize)
+				 
+					System.out.println(" Illegal Block Size " + illegalBlockSize);
+				 
+				
+				catch (InvalidAlgorithmParameterException invalidParam)
+				 
+					System.out.println(" Invalid Parameter " + invalidParam);
+				 
+	 
+
+ 
+
+
+
+
+EXTRACTING  FRAMES
+clc;
+close all;
+
+% Open an sample avi file
+
+filename = 'C:\Users\oo7\Desktop\sample.AVI';
+mov = MMREADER(filename);
+
+% Output folder
+
+outputFolder = fullfile(cd, 'frames');
+if  exist(outputFolder, 'dir')
+mkdir(outputFolder);
+end
+
+%getting no of frames
+
+numberOfFrames = mov.NumberOfFrames;
+numberOfFramesWritten = 0;
+for frame = 1 : numberOfFrames
+
+thisFrame = read(mov, frame);
+outputBaseFileName = sprintf('%3.3d.png', frame);
+outputFullFileName = fullfile(outputFolder, outputBaseFileName);
+imwrite(thisFrame, outputFullFileName, 'png');
+progressIndication = sprintf('Wrote frame %4d of %d.', frame,numberOfFrames);
+disp(progressIndication);
+numberOfFramesWritten = numberOfFramesWritten + 1;
+end
+progressIndication = sprintf('Wrote %d frames to folder "%s"',numberOfFramesWritten, outputFolder);
+disp(progressIndication);
+
+SUBBANDS
+imdata = imread('C:\Users\Ekansh Agarwal\Desktop\mayank sir\project\frames\001.png');
+ liftscheme = liftwave('lazy','int2int');
+ YcA cH cV cD]=lwt2(imdata,liftscheme)
+
+
+
+
+
+METHODOLOGY
+
+
+
+ 
+
+
+
+
+
+
+ARCHITECTURE
+
+ENCRYPTION
+1.Applying cryptography on message
+2.Extracting Frames from video 
+3.Getting sub-bands form image
+4 .Applying lsb technique on subbands 
+5 .Restoring the images 
+6 .Hiding in audio the number of frames used to hide the message 
+7 .Converting images to video
+
+
+
+
+DECRYPTION
+1.  Extract frames from video 
+2 . Get subands from image
+3 . Extract hidden data from audio
+4. Restore message from subbands 
+5. Decrpt message
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+                                          
+
+
+
+                                            REFERENCES
+ 
+Y1] D. Artz, "Digital Steganography: Hiding Data within Data," IEEEInternet Computing Journal, June 2001
+
+Y2]  Lazy Wavelet Transform Based Steganography in Video Khushman Patel, Kul Kauwid Rora, Kamini Singh, Shekhar Verma
+Dept of CSE, IIIT Allahabad, Allahabad (U.P.)
+Y3] Stego Machine   Video Steganography using Modified LSB Algorithm  Mritha Ramalingam
+
+Y4]  Steganography over Video File using Random Byte Hiding and LSB Technique 
+Ashish T. Bhole1, Rachna Patel2
+1,2Department of Computer Engineering, SSBT s COE & T, Bambhori, Jalgaon, India
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SNAPSHOTS
+
+
+
+
+
+
+ 
+
+ 
+ 
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HARDWARE AND SOFTWARE REQUIREMENTS
+
+ 	A Computer System
+ 	MATLAB 
+ 	JAVA
+ 	A video file and secret message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SAMPLE OUTPUT
+ 	We will design the steganographic application which embeds the data into the video.
+ 	Normally, after embedding the data into the video, the video may lose its resolution. 
+ 	In the proposed approach, the video remains unchanged in its resolution as well in size. 
+ 	The speed of embedding the data into the video must be also high in the proposed approach such that the video is protected and the data to the destination is sent securely.
+ 	The proposed method hides the secret message based on searching  about the identical bits. The quality of the video would not get degrade, so it will be less vulnerable to attacks, and cannot be detected by the human eye. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CONCLUSION
+The proposed system based on the research findings developed an application which would be able to hide data into video images (AVI) that provides a robust and secure way of data transmission. This Stego system implements steganography in video image and reveal process without restarting the application or starting a different application. Also this system is a Platform-independent application with high portability and high Consistency.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LITERATURE REVIEW
+
+?	Steganography in Greek means  covered writing . Steganography is the art of hiding the fact that communication is taking place, by hiding information in other information.
+ 	For hiding secret information in images, there exists a large variety of steganography techniques.
+ 	Steganography is often confused with cryptology because the two are similar in the way that they both are used to protect important information.
+ 	The difference between two is that steganography involves hiding information so it appears that no information is hidden at all. 
+
+
+Steganography supports different types of digital formats that are used for hiding the data. These files are known as carriers. Depending upon the redundancy of the object, suitable formats are used.  The main file formats that are used for steganography are text, images, audio, and video. We have implemented the text hiding in a video file(AVI) in our project. 
+For the purpose of developing a steganographic application we went through all the steganographic methods available and decided to select  Secret Key Steganography  for our project.
+The different types of steganographic techniques available are:
+1.	Pure Steganography
+2.	Public key steganography
+3.	Secret key Steganography
+Also we made an analysis of all steganographic algorithms available compared them in terms of speed, quality of hiding and security. An analysis of all the algorithms that we have studied is presented below
+Steganographic algorithm	Speed	Quality of hiding	Security
+LSB	High	Good	Medium
+F5	Low	High upto 13.4%	Strong
+JSteg	Moderate	Embedding capacity upto 12%	Less
+Lazy Wavelet 	High	High	High
+
+For our project we have decided to use Modified LSB technique which is simple yet efficient. This can be designed by embedding text file in a video file in such a way that the video does not lose its functionality. This proposed method strives for high security to an eavesdropper s inability to detect hidden information.
+MODULES
+
+The Visual Cryptographic Steganography Model In this model, we will encrypt the message using the symmetric key algorithm, and after that hide the data into a video file, which will act like our cover. At the receiving side, we will first extract the hidden data from the received video file, and then decrypt it using the shared key that we already know.
+
+ Hiding Procedure 
+
+A video file is usually composed of multiple frames. This method uses some frames (or images) of the video to hide the secret message. The secret data is hidden in sequential frames. Each frame is treated as a different image and an image steganography method is applied to them. We use the 2D - Lazy Wavelet Transform on each frame to get four sub-bands. The data is then hidden in these four subbands using LSB to hide 3 bits in each element of the subband. The length of the data stream which is encoded intothe video is stored in the audio using simple LSB. 
+
+
+
+
+ 
+
+
+
+
+The proposed method consists of the following phases:
+
+Encrypting the Given Secret Data File
+
+Given the secure data that we want to send, we first apply encryption on it so that the data is converted to a cipher text and is not readable. We apply the AES encryption algorithm on our secret data. This provides reasonable amount of security with good encrypting speed performance. 
+
+Converting Given Encrypted Cipher Data into a Stream of Bits
+
+Since we will be dealing with the individual bits of the encrypted file, which we will hide inside the cover video, we will convert the given file into a series of bits. We will read the file character by character (since after encryption, the file has been converted to only ASCII characters), and then break the eight bit characters into strings of bits. This bit stream can now be encoded into the video.
+
+Applying Lazy Wavelet Transform on the Frames of the Video
+
+A video consists of frames, each of which can be considered as separate images. On these separate images, we apply image transformation techniques. We use wavelets to transform the given image in the spatial domain into the frequency domain. Values in the multimedia data are stored as integers, but many wavelet transforms return real values, which cause data loss when stored in a multimedia file and then retrieved. To overcome this, we use the Lazy Lifting Scheme, by applying an Integer Wavelet Transform. 
+
+ Hiding Three bits in Transform Coefficients of the Four Sub-bands
+
+Performing the Integer Wavelet Transform on the frames of the video will give us four sub bands for each frame. We will hide the message in the least significant bits (LSB) of the transform coefficients. With three LSB s to store the bits in each transform coefficient.
+
+Hiding the Total Length and the Number of Bits in the Last Frame in the Audio using LSB
+
+Since we are storing the data sequentially in the frames, we will store maximum payload in all the frames, which will be fixed by the frame size. But in the last frame in which the message bits will be hidden, a fewer number of bits might be hidden. When we will decode our original message at the receiver end, we will need this number to extract the exact message. Also, the total number of frames in which the data is stored will need to be sent along with the message. Both these numbers will fit into a 4 byte unsigned integer. So we will store these numbers sequentially in the audio using the LSB method given in The process of extracting the secret data from the steganographed video is just the reverse process of hiding the data in the video.
+
+
+
+
+
+
+
+
